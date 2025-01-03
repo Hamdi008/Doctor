@@ -20,6 +20,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.Login
@@ -45,6 +46,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -76,7 +79,6 @@ class MainActivity : ComponentActivity() {
 fun HomeScreen() {
     val snackbarHostState = SnackbarHostState()
     val coroutineScope = rememberCoroutineScope()
-    val items = listOf("Home", "Profile", "Settings")
 
     Scaffold(
         contentColor = Color.White,
@@ -117,14 +119,16 @@ fun HomeScreen() {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween,
-                modifier = Modifier
+                modifier = Modifier.padding(bottom = 50.dp)
+                    .background(Color.Cyan)
+
             ) {
                 Spacer(modifier = Modifier.width(4.dp))
 
                 Text(
                     text = "Don't have an account?",
                     fontSize = 16.sp,
-                    color = Color.Gray
+                    color = Color.White
                 )
                 Spacer(modifier = Modifier.width(4.dp))
                 Button(
@@ -147,29 +151,39 @@ fun HomeScreen() {
         }
     ) { paddingValues ->
         // Main content area
-        ContentBodyWithItems(
-            modifier = Modifier.padding(paddingValues),
-            items = items
-        )
+        ContentBodyWithItems()
     }
 }
 
 @Composable
-fun ContentBodyWithItems(modifier: Modifier = Modifier, items: List<String>) {
-    Column(modifier = modifier.padding(2.dp)) {
-        Image(
-            modifier = Modifier
-                .height(400.dp)
-                .fillMaxWidth()
-                .clip(shape = CircleShape),
-            alignment = Alignment.Center,
-            contentScale = ContentScale.Fit,
-            painter = painterResource(id = R.drawable.logo_black),
-            contentDescription = null
-        )
-        DescriptionText()
+fun ContentBodyWithItems() {
+    // Wrap the LazyColumn with the scrollable modifier
+    LazyColumn(modifier = Modifier.padding(2.dp)) {
+        // Image as the first item
+        item {
+            Image(
+                modifier = Modifier
+                    .padding(top = 110.dp)
+                    .height(400.dp)
+                    .fillMaxWidth()
+                    .clip(shape = CircleShape),
+                alignment = Alignment.Center,
+                contentScale = ContentScale.Crop,
+                painter = painterResource(id = R.drawable.logo_black),
+                contentDescription = null
+            )
+        }
+
+        // Description Text as the second item
+        item {
+            DescriptionText()
+        }
+        item {
+            DescriptionText()
+        }
     }
 }
+
 
 @Composable
 fun DescriptionText() {
@@ -185,7 +199,7 @@ fun DescriptionText() {
 }
 
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun AppContentPreview() {
     DoctorTheme {
