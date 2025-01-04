@@ -77,8 +77,8 @@ fun HomeScreen(navController: NavController) {
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween,
                 modifier = Modifier
-                    .padding(bottom = 50.dp)
-                    .background(Color.Cyan)
+                    .background(Color(0xB3FFFFFF))
+                    .padding(vertical = 12.dp, horizontal = 16.dp)
 
             ) {
                 Spacer(modifier = Modifier.width(4.dp))
@@ -86,7 +86,7 @@ fun HomeScreen(navController: NavController) {
                 Text(
                     text = "Don't have an account?",
                     fontSize = 16.sp,
-                    color = Color.White
+                    color = Color.Blue
                 )
                 Spacer(modifier = Modifier.width(4.dp))
                 Button(
