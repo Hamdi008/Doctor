@@ -57,7 +57,6 @@ fun HomeScreen(navController: NavController) {
         topBar = {
             ApplicationTopBar(
                 title = "Dr. Bouchra Jerbi Ep Fekih",
-                onNavigationClick =  { navController.navigate("home") },
                 actions = {
                     IconButton(onClick = { navController.navigate("signIn") }) {
                         Icon(imageVector = Icons.AutoMirrored.Filled.Login, contentDescription = "SignIn")
@@ -176,7 +175,7 @@ fun ApplicationTopBar(
         },
         colors = TopAppBarDefaults.topAppBarColors(Color.Cyan),
         navigationIcon = {
-            IconButton(onClick = { onNavigationClick?.let { it } }) {
+            IconButton(onClick = { onNavigationClick?.invoke() }) {
                 Icon(imageVector = Icons.Default.Home, contentDescription = "Home")
             }
         },
