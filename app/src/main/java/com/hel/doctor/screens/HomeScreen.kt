@@ -56,7 +56,7 @@ fun HomeScreen(navController: NavController) {
         containerColor = Color.White,
         topBar = {
             ApplicationTopBar(
-                title = "Dr. Bouchra Jerbi Ep Fekih",
+                title = "Dr. Hamdi FEKIH",
                 actions = {
                     IconButton(onClick = { navController.navigate("signIn") }) {
                         Icon(imageVector = Icons.AutoMirrored.Filled.Login, contentDescription = "SignIn")

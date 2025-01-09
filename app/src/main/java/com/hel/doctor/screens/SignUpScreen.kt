@@ -52,7 +52,7 @@ fun SignUpScreen(navController: NavController) {
     Scaffold(
         topBar = {
             ApplicationTopBar(
-                title = "Dr. Bouchra Jerbi Ep Fekih",
+                title = "Dr. Hamdi FEKIH",
                 onNavigationClick = { navController.navigate("home")  } // Navigate back to HomeScreen
             )
         },
