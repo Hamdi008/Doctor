@@ -23,7 +23,7 @@ class DatabaseUnitTest {
         // Create an in-memory database for testing
         appDatabase = Room.inMemoryDatabaseBuilder(
             ApplicationProvider.getApplicationContext(),
-            appDatabase::class.java
+            AppDatabase::class.java
         ).allowMainThreadQueries().build()
 
         userDao = appDatabase.userDao
